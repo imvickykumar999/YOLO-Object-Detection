@@ -1,3 +1,4 @@
+
 import numpy as np
 import cv2
 
@@ -14,9 +15,13 @@ COLORS = np.random.randint(0, 255, size=(len(labels), 3), dtype="uint8")
 
 net = cv2.dnn.readNetFromDarknet(modelConfiguration, modelWeights)
 outputLayer = net.getLayerNames()
-outputLayer = [outputLayer[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+
+# https://stackoverflow.com/a/69941660/11493297
+# outputLayer = [outputLayer[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+outputLayer = [outputLayer[i - 1] for i in net.getUnconnectedOutLayers()]
 
 video_capture = cv2.VideoCapture(0)
+# video_capture = cv2.VideoCapture('http://192.168.230.81:8080')
 (W, H) = (None, None)
 
 while True:
