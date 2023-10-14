@@ -6,8 +6,8 @@ NMSThreshold = 0.3
 
 modelConfiguration = 'yolov3.cfg'
 modelWeights = 'yolov3.weights'
-#inputimage = 'person.jpg'
-inputimage = input('\nEnter Image path : ')
+inputimage = 'person.jpg'
+# inputimage = input('\nEnter Image path : ')
 labelsPath = 'coco.names'
 
 labels = open(labelsPath).read().strip().split('\n')
@@ -19,7 +19,7 @@ image = cv2.imread(inputimage)
 (H, W) = image.shape[:2]
 
 layerName = net.getLayerNames()
-layerName = [layerName[i[0] - 1] for i in net.getUnconnectedOutLayers()]
+layerName = [layerName[i - 1] for i in net.getUnconnectedOutLayers()]
 
 blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (416, 416), swapRB = True, crop = False)
 net.setInput(blob)
