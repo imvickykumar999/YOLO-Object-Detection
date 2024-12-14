@@ -21,7 +21,7 @@ outputLayer = net.getLayerNames()
 outputLayer = [outputLayer[i - 1] for i in net.getUnconnectedOutLayers()]
 
 video_capture = cv2.VideoCapture(0)
-# video_capture = cv2.VideoCapture('http://192.168.230.81:8080')
+# video_capture = cv2.VideoCapture('http://80.66.36.54/cgi-bin/faststream.jpg')
 (W, H) = (None, None)
 
 while True:
